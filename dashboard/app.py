@@ -1,23 +1,36 @@
+# Import Packages as needed for Python and Pyshiny Packages.
+
+import matplotlib.pyplot as plt
+import numpy as np
+from shiny.express import ui, input, render
+import pandas as pd
+from shiny.express import ui, input, render
+import plotly.express as px
+from shiny.express import input, ui
+from shinywidgets import render_plotly
 import plotly.express as px
 from shiny.express import input, ui
 from shinywidgets import render_plotly
 
-ui.page_opts(title="NBA OUTLOOK ON LaBron James", fillable=True)
+# Add a UI Title Page And Sidebar with data information.
+
+ui.page_opts(title="NBA OUTLOOK ON LeBron James", fillable=True)
 with ui.layout_columns():
     from shiny.express import ui
 
 with ui.sidebar(bg="#f8f8f8"):
-    "Vashti's Module 6 App demonstrate LeBron James Progress 2023-2024"
+    "Vashti's Module 6 App demonstrates LeBron James Progress 2023-2024"
 
-"Main Content"
+"LeBron James Stats and Progress"
 
-# Create a deque by passing in a list with values
-from collections import deque
 
-temp_deque_A = deque([25, 7, 8])
-len(temp_deque_A)
-msft_Temperature = deque(maxlen=3)
-print(temp_deque_A)
+# Add a histogram to visualize data input
+@render.plot(alt="A histogram")
+def histogram():
+    np.random.seed(19680801)
+    x = 100 + 15 * np.random.randn(437)
+    plt.hist(x, input.n(), density=True)
+
 
 # Define LeBron James stats for the 2023 and 2023-24 NBA seasons
 lebron_stats_2023 = {
@@ -37,12 +50,8 @@ lebron_stats_2024 = {
 }
 
 # Print the stats
-print("LeBron James Stats (2023):")
+print("LeBron James Stats (2023-24):")
 for key, value in lebron_stats_2023.items():
-    print(f"{key}: {value}")
-
-print("\nLeBron James Stats (2023-24):")
-for key, value in lebron_stats_2024.items():
     print(f"{key}: {value}")
 
 # Add UI card display
@@ -50,51 +59,11 @@ ui.page_opts(fillable=True)
 
 with ui.layout_columns():
     with ui.card():
-        "Points per game 25.4"
+        "Points per game 25.4, 28.9"
     with ui.card():
-        "Rebounds per game 7.3"
+        "Rebounds per game 7.3, 8.3"
     with ui.card():
-        "Assist per game 8.1"
-
-
-# Import Python as Shiny packages Needed
-import plotly.express as px
-from shiny.express import input, ui
-from shinywidgets import render_plotly
-
-# Add a title UI Title Page
-
-from shiny.express import ui
-
-ui.panel_title("NBA Lebron James Stat", "Window Title")
-from shiny.express import ui
-
-# Add a sidebar
-with ui.sidebar(position="left", bg="#f8f8f8"):
-    "Vashti's Module 6 App"
-
-"Demonstration of progress"
-# Add Stat for Lebron James and duration
-
-lebron_stats_2024 = {
-    "Season": "2023-24",
-    "Points per game": 25.4,
-    "Rebounds per game": 7.3,
-    "Assists per game": 8.1,
-    "Field Goal Percentage": 53.6,
-}
-
-# Print the stats
-print("LeBron James Stats (2023-24):")
-
-# Create a deque by passing in a list with values
-from collections import deque
-
-temp_deque_A = deque([25, 7, 53])
-len(temp_deque_A)
-msft_Temperature = deque(maxlen=3)
-print(temp_deque_A)
-
+        "Assist per game 8.1, 6.8"
 
 # Define the Shiny UI Page layout - Page Options
 
@@ -102,15 +71,15 @@ print(temp_deque_A)
 # Set title to a string in quotes that will appear at the top
 # Set fillable to True to use the whole page width for the UI
 
-ui.page_opts(title="NBA Express: Live Data (Basic)", fillable=True)
+ui.page_opts(title="NBA Express: Stat Data (Update)", fillable=True)
 
 # Define the Shiny UI Page layout - Sidebar
 
 with ui.sidebar(open="open"):
-    ui.h2("Vashti's Antarctic Live Data", class_="text-center")
+    ui.h2("Vashti's Module 6 App", class_="text-center")
 
     ui.p(
-        "A demonstration of real-time changes in temperature readings in Antarctica.",
+        "A demonstration of an NBA Player's Progress.",
         class_="text-center",
     )
 
@@ -131,7 +100,5 @@ with ui.sidebar(open="open"):
     )
 
     ui.a("PyShiny", href="https://shiny.posit.co/py/", target="_blank")
-
-
 
 
