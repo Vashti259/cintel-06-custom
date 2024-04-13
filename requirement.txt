@@ -1,7 +1,9 @@
 # Python/Pyshiny Packages
 pandas
 seaborn
-pyshiny
-numphy
+Pyshiny
+Numphy
 matplotlib
 Shiny
+scipy
+nba_api
