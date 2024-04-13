@@ -1,4 +1,7 @@
+Python/Pyshiny Packages
 pandas
 seaborn
 pyshiny
 numphy
+matplotlib
+Shiny
